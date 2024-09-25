@@ -18,7 +18,7 @@ x-airflow-common: &airflow-common
     - ./jobs:/opt/airflow/jobs
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
-    - ./repos_csv:/opt/airflow/repos_csv
+    - ./repos_csv:/opt/bitnami/spark/repos_csv
   depends_on:
     - postgres
   networks:
