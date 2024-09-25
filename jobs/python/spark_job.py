@@ -39,8 +39,8 @@ if selected_files:
     agg_df.show()
     agg_df = agg_df.na.fill(0)
 
-#     agg_df.write.csv(f'./repos_csv/output/{end_date}.csv')
+    agg_df.write.csv(f'/opt/bitnami/spark/repos_csv/output/{end_date}.csv')
 else:
-     print("No files found for the given date range.")
+    print("No files found for the given date range.")
 
 spark.stop()
