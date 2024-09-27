@@ -53,7 +53,7 @@ Inside the airspark/
 
 `$ docker-compose up -d --build`
 
-you can see in the airflow webserver log files that you need to run the `airflow db init` command. Consequently, we need to run the docker-compose up -d command again without --build
+you can see in the airflow webserver log files that you need to run the `airflow db init` command. Consequently, we need to run the `docker-compose up -d` command again without `--build`.
 
 Now you need to create folders for input and output files (to avoid changing the docker-compose file I suggest creating a **repos_csv** folder and within it create two folders _input, output_). After that you should run the input generation script **generate.py**, the way to use the script is specified at the beginning of the script.
 
