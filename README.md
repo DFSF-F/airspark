@@ -41,6 +41,42 @@ The output is a CSV file that contains the aggregated results for each user over
 _Output files are named according to the date the aggregation is generated for, using the format ***YYYY-MM-DD.csv***, and are stored in the **output/ directory**._
 
 
-## etc
+## Setup
 
+### Clone project
 
+`$ git clone https://github.com/DFSF-F/airspark`
+
+### Build airflow Docker
+
+Inside the airspark/
+
+`$ docker-compose up -d --build`
+
+you can see in the airflow webserver log files that you need to run the `airflow db init` command. Consequently, we need to run the docker-compose up -d command again without --build
+
+Now you need to create folders for input and output files (to avoid changing the docker-compose file I suggest creating a **repos_csv** folder and within it create two folders _input, output_). After that you should run the input generation script **generate.py**, the way to use the script is specified at the beginning of the script.
+
+## How to run a DAG to test
+
+1. Configure spark connection acessing airflow web UI http://localhost:8080 and going to Connections
+<p align="center">
+ <img width="600px" src="docs/how_to_find_connection.png" alt="qr"/>
+</p>
+
+2. Edit the spark_default connection inserting spark://spark-master in Host field and Port 7077
+<p align="center">
+ <img width="600px" src="docs/airflow_connection.png" alt="qr"/>
+</p> 
+
+3. Run the spark-test DAG
+
+4. Check the output folder, there you will see Dag results with a .csv extension
+<p align="center">
+ <img width="600px" src="docs/result.png" alt="qr"/>
+</p> 
+
+5. Check the spark application in the Spark Master web UI (http://localhost:9090)
+<p align="center">
+ <img width="600px" src="docs/spark.png" alt="qr"/>
+</p> 
